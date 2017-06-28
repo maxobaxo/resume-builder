@@ -1,0 +1,20 @@
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>Resume Creator</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>Job Added!</h1>
+        <h3>You created the following employment experience:</h3>
+        <ul class='list-unstyled'>
+            <li> {{ new_job.getCompany }} </li>
+            <li> {{ new_job.getTitle }} </li>
+            <li> {{ new_job.getDescription }} </li>
+            <li> {{ new_job.getDates }} </li>
+            <li> <img src='{{ new_job.getImage }}' alt='company_logo'> </li>
+        </ul>
+        <h3><a href='/'>View list of all jobs</a></h3>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>Resume Creator</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>Create Your Resume</h1>
+
+        {% if jobs is not empty %}
+            <h2>Employment History:</h2>
+            <ul class='list-unstyled'>
+                {% for job in jobs %}
+                    <li><h3>
+                        <img src='{{ job.getImage }}' alt='company_logo' width='64px'>
+                        {{ job.getCompany }}
+                    </h3></li>
+                    <li><em> {{ job.getTitle }} </em></li>
+                    <li> {{ job.getDescription }} </li>
+                    <li> {{ job.getDates }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <form action='/created_job' method='post'>
+            <div class='form-group'>
+                <label for='company'>Company</label>
+                <input id='company' name='company' class='form-control' type='text'>
+            </div>
+            <div class='form-group'>
+                <label for='title'>Title</label>
+                <input id='title' name='title' class='form-control' type='text'>
+            </div>
+            <div class='form-group'>
+                <label for='dates'>Dates</label>
+                <input id='dates' name='dates' class='form-control' type='text'>
+            </div>
+            <div class='form-group'>
+                <label for='description'>Description</label>
+                <input id='description' name='description' class='form-control' type='text'>
+            </div>
+            <div class='form-group'>
+                <label for='image_url'>Company Logo (optional)</label>
+                <input id='image_url' name='image_url' class='form-control' type='text'>
+            </div>
+            <button type='submit' class='btn-info'>Add Experience</button>
+        </form>
+        <form action='/deleted_jobs' method='post'>
+            <button type='submit' class='btn-danger'>Delete Resume</button>
+        </form>
+    </div>
+</body>
+</html>
