@@ -15,6 +15,8 @@
     ));
 
     $app->get('/', function() use ($app) {
-        return $app['twig']->render('jobs.html.twig', array('jobs' => Job::getALL()));
+        return $app['twig']->render('jobs.html.twig', array('jobs' => Job::getAll()));
     });
+
+    return $app;
 ?>
