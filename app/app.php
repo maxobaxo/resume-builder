@@ -5,9 +5,9 @@
 
     session_start();
 
-    if(empty($_SESSION['person_info'])) {
-        $_SESSION['person_info'] = array();
-    }
+    // if(empty($_SESSION['person_info'])) {
+    //     $_SESSION['person_info'] = array();
+    // }
 
     if(empty($_SESSION['list_of_jobs'])) {
         $_SESSION['list_of_jobs'] = array();
@@ -19,13 +19,13 @@
     ));
 
     $app->get('/', function() use ($app) {
-        return $app['twig']->render('jobs.html.twig', array('person' => Person::getAll()));
+        return $app['twig']->render('jobs.html.twig');
     });
 
     $app->post('/resume', function() use ($app) {
         $person = new Person($_POST['name'], $_POST['email']);
         $person->save();
-        return $app['twig']->render('resume.html.twig', array('new_person' => $person));
+        return $app['twig']->render('resume.html.twig', array('new_person' => Person::getAll()));
     });
 
     $app->get('/resume', function() use ($app) {

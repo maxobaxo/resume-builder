@@ -6,8 +6,10 @@
 <body>
     <div class='container'>
         <h1>Current Resume</h1>
-        <h2> {{ new_person.getName }} </h2>
-        <h3> {{ new_person.getEmail }} </h3>
+        {% for person in new_person %}
+            <h2> {{ person.getName }} </h2>
+            <h3> {{ person.getEmail }} </h3>
+        {% endfor %}
         {% if jobs is not empty %}
             <h2>Employment History:</h2>
             <ul class='list-unstyled'>

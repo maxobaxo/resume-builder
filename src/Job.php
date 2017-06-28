@@ -101,7 +101,7 @@
         }
 
         static function deleteAll() {
-            return $_SESSION['person_info'];
+            $_SESSION['person_info'] = array();
         }
     }
 ?>
